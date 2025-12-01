@@ -1,0 +1,259 @@
+/* =========================================================
+   TecNanoFactura – Tema global Lumo (tecnano)
+   Archivo: src/main/frontend/themes/tecnano/styles.css
+   ========================================================= */
+
+/* =========================================================
+   IMPORTANTE:
+   En temas globales, usa html/body (NO :host)
+   ========================================================= */
+
+/* =============== MODO CLARO (default) =============== */
+html, body {
+    /* Marca */
+    --tecnano-brand: #182132;
+    --tecnano-brand-soft: #1f2937;
+    --tecnano-brand-contrast: #f9fafb;
+    --tecnano-primary: #2563eb;
+
+    /* Lumo */
+    --lumo-primary-color: var(--tecnano-primary);
+    --lumo-primary-text-color: #ffffff;
+    --lumo-primary-color-50pct: rgba(37, 99, 235, 0.50);
+    --lumo-primary-color-10pct: rgba(37, 99, 235, 0.10);
+
+    --lumo-error-color: #ef4444;
+    --lumo-success-color: #16a34a;
+    --lumo-warning-color: #f59e0b;
+
+    /* ✅ Claro suave (no blanco puro) */
+    --lumo-base-color: #f3f6fd;            /* superficies internas (inputs, grid, etc.) */
+    --lumo-body-text-color: #0f172a;
+    --lumo-secondary-text-color: #64748b;
+
+    /* Contrastes suaves */
+    --lumo-contrast-5pct: rgba(15, 23, 42, 0.04);
+    --lumo-contrast-10pct: rgba(15, 23, 42, 0.08);
+    --lumo-contrast-20pct: rgba(15, 23, 42, 0.16);
+
+    --lumo-border-radius-s: 0.40rem;
+    --lumo-border-radius-m: 0.65rem;
+    --lumo-border-radius-l: 1.00rem;
+
+    --lumo-font-family:
+            system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, "Helvetica Neue",
+            Arial, sans-serif;
+
+    /* ✅ Fondo general suave */
+    --tn-app-bg: #e9efff;
+
+    /* ✅ Superficies (cards) con tinte y sin blanco puro */
+    --tn-card-bg: rgba(255, 255, 255, 0.72);
+    --tn-card-border: rgba(15, 23, 42, 0.08);
+    --tn-card-shadow: 0 12px 28px rgba(15, 23, 42, 0.10);
+
+    /* Drawer */
+    --tn-drawer-bg: #0b1220;
+    --tn-drawer-text: #e5e7eb;
+    --tn-drawer-text-muted: #94a3b8;
+    --tn-drawer-hover: rgba(255,255,255,0.08);
+    --tn-drawer-active: rgba(37, 99, 235, 0.22);
+    --tn-drawer-border: rgba(255,255,255,0.10);
+
+    /* Para que el navegador pinte controles acorde al modo */
+    color-scheme: light;
+}
+
+/* =============== MODO OSCURO =============== */
+/* (por si Vaadin pone theme en html o en body, cubrimos ambos) */
+html[theme~="dark"], body[theme~="dark"] {
+    --lumo-base-color: #0b1220;
+    --lumo-body-text-color: #e5e7eb;
+    --lumo-secondary-text-color: #94a3b8;
+
+    --lumo-contrast-5pct: rgba(255,255,255,0.06);
+    --lumo-contrast-10pct: rgba(255,255,255,0.12);
+    --lumo-contrast-20pct: rgba(255,255,255,0.22);
+
+    --tn-app-bg: #060a12;
+
+    --tn-card-bg: rgba(255, 255, 255, 0.04);
+    --tn-card-border: rgba(255, 255, 255, 0.10);
+    --tn-card-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+
+    --tn-drawer-bg: #070c16;
+    --tn-drawer-text: #e5e7eb;
+    --tn-drawer-text-muted: #94a3b8;
+    --tn-drawer-hover: rgba(255,255,255,0.08);
+    --tn-drawer-active: rgba(37, 99, 235, 0.26);
+    --tn-drawer-border: rgba(255,255,255,0.10);
+
+    color-scheme: dark;
+}
+
+/* =========================
+   Fondo general (evitar blanco total)
+   ========================= */
+html, body { height: 100%; }
+body {
+    margin: 0;
+
+    /* Fondo suave con gradientes */
+    background:
+            radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 45%),
+            radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.14), transparent 45%),
+            var(--tn-app-bg);
+}
+
+/* Selección de texto */
+::selection {
+    background: var(--lumo-primary-color-50pct);
+    color: #ffffff;
+}
+
+/* =========================
+   AppLayout
+   ========================= */
+/* ✅ CLAVE: evita que AppLayout “pinte” blanco encima del body */
+vaadin-app-layout {
+    background: transparent;
+}
+
+vaadin-app-layout::part(content) {
+    padding: 1rem;
+    background: transparent; /* ✅ deja ver el fondo del body */
+}
+
+/* Navbar */
+vaadin-app-layout::part(navbar) {
+    background-color: var(--tecnano-brand);
+    color: var(--tecnano-brand-contrast);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.45);
+}
+
+/* Drawer */
+vaadin-app-layout::part(drawer) {
+    background: var(--tn-drawer-bg);
+    border-right: 1px solid var(--tn-drawer-border);
+
+    --lumo-body-text-color: var(--tn-drawer-text);
+    --lumo-secondary-text-color: var(--tn-drawer-text-muted);
+
+    /* nunca transparente aquí */
+    --lumo-base-color: var(--tn-drawer-bg);
+}
+
+/* =========================
+   Navbar: clases de MainLayout
+   ========================= */
+.tn-navbar {
+    gap: 0.35rem;
+    padding: 0.25rem 0.5rem;
+}
+.tn-toolbar-title {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+.tn-toolbar-actions { gap: 0.25rem; }
+
+.tn-theme-btn, .tn-logout-btn, .tn-back-btn { color: rgba(255,255,255,0.92); }
+.tn-theme-btn:hover, .tn-logout-btn:hover, .tn-back-btn:hover { background: rgba(255,255,255,0.10); }
+
+/* =========================
+   Drawer (contenido)
+   ========================= */
+.tn-drawer {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 0px);
+    padding: 0.85rem;
+    box-sizing: border-box;
+}
+.tn-drawer-header {
+    padding: 0.25rem 0.25rem 0.75rem 0.25rem;
+    border-bottom: 1px solid var(--tn-drawer-border);
+    margin-bottom: 0.75rem;
+}
+.tn-drawer-header h2 {
+    color: var(--tn-drawer-text);
+    font-size: 1.1rem;
+}
+.tn-drawer-sub {
+    display: block;
+    color: var(--tn-drawer-text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}
+.tn-drawer-footer {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--tn-drawer-border);
+    color: var(--tn-drawer-text-muted);
+    font-size: 0.8rem;
+}
+
+.tn-sidenav { width: 100%; }
+
+vaadin-side-nav-item::part(link) {
+    border-radius: 0.85rem;
+    padding: 0.55rem 0.65rem;
+    color: var(--tn-drawer-text);
+}
+vaadin-side-nav-item:hover::part(link) { background: var(--tn-drawer-hover); }
+vaadin-side-nav-item[active]::part(link),
+vaadin-side-nav-item[selected]::part(link) { background: var(--tn-drawer-active); }
+
+/* =========================
+   Cards (reutilizables)
+   ========================= */
+.card-blanca {
+    background: var(--tn-card-bg);
+    border-radius: var(--lumo-border-radius-l);
+    box-shadow: var(--tn-card-shadow);
+    border: 1px solid var(--tn-card-border);
+    padding: 1rem 1.25rem;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .card-blanca { padding: 0.75rem 0.85rem; }
+}
+
+/* Títulos */
+h1 {
+    margin-top: 0.1rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--lumo-body-text-color);
+}
+h2 {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--lumo-body-text-color);
+}
+h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--lumo-body-text-color);
+}
+
+/* Inputs width */
+vaadin-text-field,
+vaadin-number-field,
+vaadin-combo-box,
+vaadin-select,
+vaadin-password-field {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* No imprimir barras/botones */
+@media print {
+    .tn-no-print { display: none !important; }
+}

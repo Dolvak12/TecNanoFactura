@@ -1,0 +1,144 @@
+/* ============================================
+   Shared styles – TecNanoFactura
+   ============================================ */
+
+:root {
+    --tecnano-card-radius: 12px;
+    --tecnano-card-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    --tecnano-border-soft: rgba(15, 23, 42, 0.06);
+
+    --tecnano-spacing-xl: 2rem;
+    --tecnano-spacing-l: 1.5rem;
+    --tecnano-spacing-m: 1rem;
+    --tecnano-spacing-s: 0.5rem;
+}
+
+.view-root {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.view-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: var(--tecnano-spacing-m);
+    gap: 0.75rem;
+}
+
+.view-header h1,
+.view-header h2,
+.view-header h3 { margin: 0; }
+
+.view-header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.view-header-subtitle {
+    font-size: 0.85rem;
+    color: var(--lumo-secondary-text-color);
+}
+
+.view-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .view-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .view-header-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+.section-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--lumo-secondary-text-color);
+    margin: 0.75rem 0 0.25rem 0;
+}
+
+.section-subtitle {
+    font-size: 0.8rem;
+    color: var(--lumo-secondary-text-color);
+    margin: 0;
+}
+
+/* ✅ Card suave (usa variables del tema) */
+.card-blanca {
+    background: var(--tn-card-bg, var(--lumo-base-color));
+    border-radius: var(--lumo-border-radius-l, var(--tecnano-card-radius));
+    box-shadow: var(--tn-card-shadow, var(--tecnano-card-shadow));
+    border: 1px solid var(--tn-card-border, var(--tecnano-border-soft));
+    padding: 1rem 1.25rem;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .card-blanca { padding: 0.75rem 0.85rem; }
+}
+
+.card-lateral {
+    width: 100%;
+    max-width: 420px;
+}
+
+.resumen-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    background-color: var(--lumo-contrast-5pct);
+    color: var(--lumo-body-text-color);
+}
+
+.resumen-chip-label { font-weight: 500; }
+.resumen-chip-value { font-weight: 600; }
+
+.resumen-chip.success {
+    background-color: rgba(22, 163, 74, 0.12);
+    color: var(--lumo-body-text-color);
+}
+
+.resumen-chip.error {
+    background-color: rgba(239, 68, 68, 0.12);
+    color: var(--lumo-body-text-color);
+}
+
+.resumen-chip.warning {
+    background-color: rgba(245, 158, 11, 0.16);
+    color: var(--lumo-body-text-color);
+}
+
+.view-section { margin-top: var(--tecnano-spacing-m); }
+
+.text-muted {
+    font-size: 0.8rem;
+    color: var(--lumo-secondary-text-color);
+}
+
+.row-end {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.divider-soft {
+    height: 1px;
+    width: 100%;
+    background-color: var(--lumo-contrast-10pct);
+    margin: 0.5rem 0;
+}
